@@ -3,6 +3,8 @@
 place class that inherits from our base class
 """
 from models.base_model import BaseModel
+
+
 class Place(BaseModel):
     # Place Model
     # Attributes

@@ -6,12 +6,13 @@ from uuid import uuid4
 from datetime import datetime
 import models
 
+
 class BaseModel:
     """Base class for all our classes"""
     def __init__(self, *args, **kwargs):
         """initialize  if nothing is passed"""
         if kwargs:
-            for key,val in kwargs.items():
+            for key, val in kwargs.items():
                 if key == "__class__":
                     pass
                 elif key == "created_at" or key == "updated_at":
@@ -19,7 +20,7 @@ class BaseModel:
                     setattr(self, key, timer)
                 else:
                     setattr(self, key, val)
-        else:  
+        else:
             from models import storage
             self.id = str(uuid4())
             self.created_at = datetime.now()

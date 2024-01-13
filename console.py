@@ -22,6 +22,7 @@ classes = ("BaseModel",
            "Place",
            "Review")
 
+
 class ModelNotFoundError(Exception):
     """Raised when an unknown module is passed"""
     def __init__(self, arg="BaseModel"):
@@ -32,16 +33,18 @@ class InstanceNotFoundError(Exception):
     """Raised when an unknown id  is passed"""
 
     def __init__(self, obj_id="", mod="BaseModel"):
-        super().__init__(
-                f"Insatnce of {mod} with id {obj_id} does not exist!")
-        
+        super().__init__(f"Insatnce of {mod} with id {obj_id} does not exist!")
+
+
 class HBNBCommand(Cmd):
     """ the prompt for hbnb """
     prompt = "(hbnb) "
     # controling units
+
     def do_EOF(self, arg):
         """Exits the programme"""
         return True
+
     def do_quit(self, arg):
         """quit the program"""
         return True
@@ -49,11 +52,11 @@ class HBNBCommand(Cmd):
     def emptyline(self):
         """Overides empty line to do nothing """
         pass
+
     def do_create(self, arg):
         """creates various instances for the previous classes
         we already created for the program.
-        $ create (classname) 
-        prints the id if it is correct and error if not
+        $ create (classname) prints the id if it is correct and error if not
         """
         args = arg.split()
         n = len(args)
@@ -181,5 +184,7 @@ class HBNBCommand(Cmd):
         except Exception as e:
             print("** invalid syntax **")
             pass
+
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

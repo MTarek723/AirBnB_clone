@@ -14,6 +14,7 @@ from models.place import Place
 from models.review import Review
 from datetime import datetime
 
+
 class ModelNotFoundError(Exception):
     """Raised when an unknown module is passed"""
     def __init__(self, arg="BaseModel"):
@@ -26,6 +27,7 @@ class InstanceNotFoundError(Exception):
     def __init__(self, obj_id="", mod="BaseModel"):
         super().__init__(
                 f"Insatnce of {mod} with id {obj_id} does not exist!")
+
 
 class FileStorage:
     """
@@ -40,7 +42,6 @@ class FileStorage:
             "User", "City", "State", "Place",
             "Amenity", "Review"
             )
-    
 
     def __init__(self):
         """constructor"""
@@ -65,13 +66,13 @@ class FileStorage:
 
     def reload(self):
         """de-serialize persisted objects"""
-        savedclasses = { "BaseModel": BaseModel,
-                    "User": User,
-                    "City": City,
-                    "State": State,
-                    "Place": Place,
-                    "Amenity": Amenity,
-                    "Review": Review}
+        savedclasses = {"BaseModel": BaseModel,
+                        "User": User,
+                        "City": City,
+                        "State": State,
+                        "Place": Place,
+                        "Amenity": Amenity,
+                        "Review": Review}
         try:
             with open(FileStorage.__file_path, "r") as f:
                 decoded = json.load(f)
@@ -136,4 +137,3 @@ class FileStorage:
         finally:
             inst.updated_at = datetime.now()
             self.save()
-        
