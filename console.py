@@ -97,7 +97,7 @@ class HBNBCommand(Cmd):
 
     def do_destroy(self, arg):
         """deletes a class with the same id given."""
-        arg = args.split()
+        args = arg.split()
         n = len(args)
         if not n:
             print("** class name missing **")
